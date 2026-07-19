@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local maintenance protocol; not part of the public Skill package.
+/AGENTS.md
+/MEMORY.md

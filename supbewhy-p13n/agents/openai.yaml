@@ -1,0 +1,4 @@
+interface:
+  display_name: "supɃewhY-P13N"
+  short_description: "个性化配置 ChatGPT/Codex，并安全迁移到新设备"
+  default_prompt: "Use $supbewhy-p13n to audit and safely personalize or migrate my ChatGPT and Codex setup."
