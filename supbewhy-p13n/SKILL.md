@@ -69,8 +69,11 @@ Read `references/interactive-onboarding.md` when onboarding spans multiple choic
 - Always accept `back`, `skip`, `pause`, or their language-equivalent. Allow `skip` unless the missing answer controls write authority, privacy consent, or a destructive/high-impact action.
 - On `back`, revise the prior answer without restarting. On `pause`, return a compact resumable state and do not persist it outside the conversation unless the user approves.
 - Prefer ordinary chat for open-ended work descriptions and nuanced preferences.
-- When the `visualize` Skill is available and a compact choice surface would materially reduce effort, use it as an optional interaction layer for routing, retention posture, consent, grouped decisions, or final scope confirmation. Load and follow the full `visualize` Skill before creating the interaction.
-- Keep all decisions valid without the visual. If the visual is unavailable, unsupported, or declined, use a numbered text equivalent and continue from the same state.
+- When the `visualize` Skill is available and a compact choice surface would materially reduce effort, use it as an optional interaction layer for low-impact routing, retention posture, and grouped decisions. Load and follow the full `visualize` Skill before creating the interaction.
+- Treat privacy scans, local or account writes, migration export, import, rollback, and high-impact configuration activation as confirmation gates. When `visualize` is available and the host supports it, use a distinct confirmation surface rather than burying authorization in prose or a code sample.
+- Every confirmation surface must begin with `Waiting for authorization — no action has run`, show the exact action, scope, limits, exclusions, destination or report, and rollback effect as applicable, and provide one explicit primary approval action plus `adjust scope` and `cancel`. Never offer `skip` on a confirmation gate.
+- Rendering the surface, opening it, or showing a default selection does not grant authority. Act only after the returned follow-up explicitly records approval for the concrete action and scope. Any action, mode, path, cap, destination, or conflict-policy change requires new approval.
+- Keep all decisions valid without the visual. If the visual is unavailable or unsupported, use a prominent text confirmation that starts with the waiting state and requests an explicit approval sentence. Do not present the required approval as an ordinary code-block example. Low-impact choices may still use a numbered text equivalent.
 - Never put discovered configuration bodies, secrets, private file contents, or durable profile data inside visualization source. Send only the user's explicit selections back to the conversation.
 
 ## Inspect safely

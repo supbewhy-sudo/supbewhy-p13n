@@ -27,6 +27,16 @@ Show:
 
 These size bands are operational estimates, not exact token counts. Recommend narrowing any large scan.
 
+## Authorization gate
+
+Before every metadata or targeted-content scan, set the interaction state to `Waiting for authorization — no data has been read`. When `visualize` is available and the host supports it, use the mandatory confirmation surface defined in `interactive-onboarding.md`.
+
+The primary action must name the mode, for example `Approve and start read-only metadata scan` or `Approve and start targeted content audit`. The surface must also provide `Adjust scope` and `Cancel`; it must not provide `Skip`. A default selection, an opened surface, or a request such as "migrate this computer" is not scan consent.
+
+When an interactive surface is unavailable, present the waiting state, exact roots and paths, mode, caps, exclusions, approximate context cost, and report path in a prominent text confirmation. Ask for one explicit approval sentence matching that scope and mode. Do not run `inspect_setup.py` until the approval is received.
+
+Any change to the roots, paths, mode, maximum file count, total bytes, exclusions, or report destination invalidates the earlier approval and requires a new confirmation.
+
 ## Always deny
 
 - `auth.json`, tokens, credentials, cookies, keychains, `.env*`;
