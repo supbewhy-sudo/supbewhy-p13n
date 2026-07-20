@@ -30,9 +30,17 @@ class SkillContractTests(unittest.TestCase):
         self.assertIn("`back`, `skip`, `pause`", self.text)
 
     def test_high_impact_actions_use_confirmation_gates(self) -> None:
-        self.assertIn("Waiting for authorization — no action has run", self.text)
-        self.assertIn("Never offer `skip` on a confirmation gate", self.text)
+        self.assertIn("localized equivalent of `Waiting for authorization — no action has run`", self.text)
+        self.assertIn("Never offer `skip` or its localized equivalent", self.text)
         self.assertIn("Any action, mode, path, cap, destination, or conflict-policy change requires new approval", self.text)
+
+    def test_visible_interactions_follow_codex_language(self) -> None:
+        self.assertIn("Resolve `interaction_language`", self.text)
+        self.assertIn("Do not use the language of this Skill file or its examples as the user's language", self.text)
+        self.assertIn("Localize every visible status, heading, field label", self.text)
+        self.assertIn("current Codex response language or the dominant language of the conversation", self.interaction)
+        self.assertIn("Keep paths, commands, code, item IDs, enum values, and structured follow-up keys unchanged", self.interaction)
+        self.assertIn("For Simplified Chinese", self.interaction)
 
     def test_confirmation_followup_preserves_explicit_authority(self) -> None:
         self.assertIn("authorization=approved|adjust|cancelled", self.interaction)

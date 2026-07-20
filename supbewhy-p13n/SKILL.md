@@ -63,15 +63,19 @@ Ask follow-up questions only when the answer changes a configuration layer, perm
 
 ## Keep onboarding low-friction
 
-Read `references/interactive-onboarding.md` when onboarding spans multiple choices or the user asks for a conversational form.
+Read `references/interactive-onboarding.md` before rendering any visual or text confirmation, when onboarding spans multiple choices, or when the user asks for a conversational form.
 
+- Resolve `interaction_language` before the first user-facing question, confirmation, handoff, or visualization. Follow the language-routing priority in the reference. Do not use the language of this Skill file or its examples as the user's language.
+- Localize every visible status, heading, field label, explanation, option, button, validation message, error, and fallback instruction. Keep paths, commands, code identifiers, item IDs, and structured follow-up keys unchanged.
+- Treat all literal English UI phrases in this Skill and its references as semantic examples only. Render their meaning in `interaction_language`; never copy them verbatim into a non-English interaction.
+- Re-resolve the language after imported or activated guidance explicitly changes the user's default response language.
 - Ask one decision group at a time and make the first response useful before requesting a full profile.
 - Always accept `back`, `skip`, `pause`, or their language-equivalent. Allow `skip` unless the missing answer controls write authority, privacy consent, or a destructive/high-impact action.
 - On `back`, revise the prior answer without restarting. On `pause`, return a compact resumable state and do not persist it outside the conversation unless the user approves.
 - Prefer ordinary chat for open-ended work descriptions and nuanced preferences.
 - When the `visualize` Skill is available and a compact choice surface would materially reduce effort, use it as an optional interaction layer for low-impact routing, retention posture, and grouped decisions. Load and follow the full `visualize` Skill before creating the interaction.
 - Treat privacy scans, local or account writes, migration export, import, rollback, and high-impact configuration activation as confirmation gates. When `visualize` is available and the host supports it, use a distinct confirmation surface rather than burying authorization in prose or a code sample.
-- Every confirmation surface must begin with `Waiting for authorization — no action has run`, show the exact action, scope, limits, exclusions, destination or report, and rollback effect as applicable, and provide one explicit primary approval action plus `adjust scope` and `cancel`. Never offer `skip` on a confirmation gate.
+- Every confirmation surface must begin with the localized equivalent of `Waiting for authorization — no action has run`, show the exact action, scope, limits, exclusions, destination or report, and rollback effect as applicable, and provide localized equivalents of one explicit primary approval action, `adjust scope`, and `cancel`. Never offer `skip` or its localized equivalent on a confirmation gate.
 - Rendering the surface, opening it, or showing a default selection does not grant authority. Act only after the returned follow-up explicitly records approval for the concrete action and scope. Any action, mode, path, cap, destination, or conflict-policy change requires new approval.
 - Keep all decisions valid without the visual. If the visual is unavailable or unsupported, use a prominent text confirmation that starts with the waiting state and requests an explicit approval sentence. Do not present the required approval as an ordinary code-block example. Low-impact choices may still use a numbered text equivalent.
 - Never put discovered configuration bodies, secrets, private file contents, or durable profile data inside visualization source. Send only the user's explicit selections back to the conversation.

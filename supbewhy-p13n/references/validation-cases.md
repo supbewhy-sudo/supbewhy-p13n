@@ -48,6 +48,16 @@
 - If the optional visual interaction is unavailable or declined, the same state and choices continue as numbered text.
 - The first onboarding response gives a useful route or provisional recommendation before requesting the full profile.
 
+## Interaction language cases
+
+- A Chinese conversation with Chinese response guidance renders the entire visible confirmation in Chinese; paths, item IDs, and structured keys remain unchanged.
+- An English conversation without conflicting guidance renders the visible confirmation in English.
+- An explicit language request overrides the dominant conversation language for the current task.
+- Already-loaded applicable `AGENTS.md`, Custom Instructions, or Project guidance outranks host locale.
+- The Skill document, ZIP contents, scripts, and English examples never force the visible interaction into English.
+- Importing guidance that explicitly changes the default response language causes the next interaction to resolve the language again.
+- Mixed-language visible labels are rejected unless the user requested bilingual output or a technical identifier must remain unchanged.
+
 ## Backup cases
 
 - Plan, audit, and preview modes do not create unnecessary backups.
@@ -96,3 +106,4 @@
 - Existing configurations receive a grouped retention plan before any mutation.
 - Low-impact visual onboarding has a complete numbered-text fallback and does not persist private configuration content in visualization source.
 - High-impact actions use a mandatory distinct confirmation surface when supported and a prominent blocking text confirmation otherwise.
+- Every user-facing interaction follows the resolved Codex response language; English examples remain semantic templates rather than fixed UI strings.

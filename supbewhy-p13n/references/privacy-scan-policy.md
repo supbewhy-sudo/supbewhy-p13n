@@ -29,9 +29,9 @@ These size bands are operational estimates, not exact token counts. Recommend na
 
 ## Authorization gate
 
-Before every metadata or targeted-content scan, set the interaction state to `Waiting for authorization — no data has been read`. When `visualize` is available and the host supports it, use the mandatory confirmation surface defined in `interactive-onboarding.md`.
+Before every metadata or targeted-content scan, set the interaction state to the `interaction_language` equivalent of `Waiting for authorization — no data has been read`. When `visualize` is available and the host supports it, use the mandatory confirmation surface defined in `interactive-onboarding.md`.
 
-The primary action must name the mode, for example `Approve and start read-only metadata scan` or `Approve and start targeted content audit`. The surface must also provide `Adjust scope` and `Cancel`; it must not provide `Skip`. A default selection, an opened surface, or a request such as "migrate this computer" is not scan consent.
+The localized primary action must name the mode, for example the semantic equivalents of `Approve and start read-only metadata scan` or `Approve and start targeted content audit`. The surface must also provide localized equivalents of `Adjust scope` and `Cancel`; it must not provide `Skip` or its localized equivalent. A default selection, an opened surface, or a request such as "migrate this computer" is not scan consent.
 
 When an interactive surface is unavailable, present the waiting state, exact roots and paths, mode, caps, exclusions, approximate context cost, and report path in a prominent text confirmation. Ask for one explicit approval sentence matching that scope and mode. Do not run `inspect_setup.py` until the approval is received.
 

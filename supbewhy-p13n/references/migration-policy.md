@@ -51,7 +51,7 @@ Before import:
 6. show the grouped recommended plan and any high-attention items;
 7. obtain one explicit confirmation for the final item plan.
 
-Export, import, and rollback approvals use the mandatory confirmation gate in `interactive-onboarding.md`. When the host supports `visualize`, show the action, exact selected item IDs, source or target roots, destination, conflict decisions, and backup or rollback effect in a distinct authorization surface. Provide one operation-specific approval action plus `Adjust scope` and `Cancel`; never offer `Skip`. A changed destination, item set, target root, conflict decision, or replacement set invalidates the earlier approval. In a text-only host, use the prominent blocking confirmation fallback.
+Export, import, and rollback approvals use the mandatory confirmation gate in `interactive-onboarding.md`. When the host supports `visualize`, show the action, exact selected item IDs, source or target roots, destination, conflict decisions, and backup or rollback effect in a distinct authorization surface. Render all visible copy in `interaction_language`; provide one localized operation-specific approval action plus localized scope-adjustment and cancellation actions, and never offer a skip action. A changed destination, item set, target root, conflict decision, or replacement set invalidates the earlier approval. In a text-only host, use the prominent localized blocking confirmation fallback.
 
 During import, create a timestamped backup and journal every target. On failure, stop and preserve the journal. Rollback may restore only journaled paths.
 
